@@ -1,0 +1,610 @@
+{
+  "info": {
+    "_postman_id": "grupofamiliar-api",
+    "name": "Grupo Familiar API",
+    "description": "Collection para probar la API de Grupo Familiar con autenticación JWT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Autenticación",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@grupofamiliar.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Refresh Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refresh_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/refresh",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "refresh"]
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"refreshToken\": \"{{refresh_token}}\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/logout",
+              "host": ["{{base_url}}"],
+              "path": ["auth", "logout"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Obtener todos los usuarios",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Obtener usuario por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/1",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener usuario por email",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/email/admin@grupofamiliar.com",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "email", "admin@grupofamiliar.com"]
+            }
+          }
+        },
+        {
+          "name": "Crear usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Carlos\",\n  \"apellidos\": \"Pérez\",\n  \"email\": \"carlos@test.com\",\n  \"telefono\": \"1234567890\",\n  \"password\": \"password123\",\n  \"idRol\": 4\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar usuario",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombres\": \"Carlos\",\n  \"apellidos\": \"Pérez Actualizado\",\n  \"email\": \"carlos@test.com\",\n  \"telefono\": \"9999999999\",\n  \"password\": \"newpassword123\",\n  \"idRol\": 4\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/usuarios/4",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "4"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar usuario",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/4",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "4"]
+            }
+          }
+        },
+        {
+          "name": "Activar usuario",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/usuarios/4/activar",
+              "host": ["{{base_url}}"],
+              "path": ["usuarios", "4", "activar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Sectores",
+      "item": [
+        {
+          "name": "Obtener todos los sectores",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sectores",
+              "host": ["{{base_url}}"],
+              "path": ["sectores"]
+            }
+          }
+        },
+        {
+          "name": "Obtener sector por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sectores/1",
+              "host": ["{{base_url}}"],
+              "path": ["sectores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear sector",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"SECTOR ROJO I\",\n  \"codigo\": \"SR1\",\n  \"supervisorId\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sectores",
+              "host": ["{{base_url}}"],
+              "path": ["sectores"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar sector",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"SECTOR ROJO I ACTUALIZADO\",\n  \"codigo\": \"SR1\",\n  \"supervisorId\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/sectores/1",
+              "host": ["{{base_url}}"],
+              "path": ["sectores", "1"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar sector",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/sectores/1",
+              "host": ["{{base_url}}"],
+              "path": ["sectores", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Grupos",
+      "item": [
+        {
+          "name": "Obtener todos los grupos",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/grupos",
+              "host": ["{{base_url}}"],
+              "path": ["grupos"]
+            }
+          }
+        },
+        {
+          "name": "Obtener grupo por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/grupos/1",
+              "host": ["{{base_url}}"],
+              "path": ["grupos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener grupos por sector",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/grupos/sector/1",
+              "host": ["{{base_url}}"],
+              "path": ["grupos", "sector", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear grupo",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"LIDER ROJO I\",\n  \"codigo\": \"LR1\",\n  \"sectorId\": 1,\n  \"liderId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/grupos",
+              "host": ["{{base_url}}"],
+              "path": ["grupos"]
+            }
+          }
+        },
+        {
+          "name": "Actualizar grupo",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"LIDER ROJO I ACTUALIZADO\",\n  \"codigo\": \"LR1\",\n  \"sectorId\": 1,\n  \"liderId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/grupos/1",
+              "host": ["{{base_url}}"],
+              "path": ["grupos", "1"]
+            }
+          }
+        },
+        {
+          "name": "Desactivar grupo",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/grupos/1",
+              "host": ["{{base_url}}"],
+              "path": ["grupos", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reportes",
+      "item": [
+        {
+          "name": "Obtener todos los reportes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes",
+              "host": ["{{base_url}}"],
+              "path": ["reportes"]
+            }
+          }
+        },
+        {
+          "name": "Obtener reporte por ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes/1",
+              "host": ["{{base_url}}"],
+              "path": ["reportes", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener reportes de un grupo",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes/grupo/1",
+              "host": ["{{base_url}}"],
+              "path": ["reportes", "grupo", "1"]
+            }
+          }
+        },
+        {
+          "name": "Obtener reportes de un período",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes/periodo/1",
+              "host": ["{{base_url}}"],
+              "path": ["reportes", "periodo", "1"]
+            }
+          }
+        },
+        {
+          "name": "Crear/Actualizar reporte",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"grupoId\": 1,\n  \"periodoId\": 1,\n  \"cantHermanos\": 15,\n  \"cantAmigos\": 5,\n  \"cantAdolescentes\": 3,\n  \"cantConvertidos\": 1,\n  \"cantNinosCristianos\": 8,\n  \"cantNinosAmigos\": 2,\n  \"cantVisitaConsolidacion\": 5,\n  \"cantVisitaCasaDePaz\": 3,\n  \"cantVisitaHogar\": 2,\n  \"cantHrOracion\": 10,\n  \"cantHrMep\": 8,\n  \"cantHrDiscipulado\": 5,\n  \"cantRetiroEspiritual\": 0,\n  \"ofrendaSabado\": 250.00,\n  \"ofrendaNinos\": 50.00,\n  \"ofrendaMiercoles\": 30.00,\n  \"observaciones\": \"Semana productiva\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/reportes",
+              "host": ["{{base_url}}"],
+              "path": ["reportes"]
+            }
+          }
+        },
+        {
+          "name": "Enviar reporte",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes/1/enviar",
+              "host": ["{{base_url}}"],
+              "path": ["reportes", "1", "enviar"]
+            }
+          }
+        },
+        {
+          "name": "Aprobar reporte",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes/1/aprobar",
+              "host": ["{{base_url}}"],
+              "path": ["reportes", "1", "aprobar"]
+            }
+          }
+        },
+        {
+          "name": "Rechazar reporte",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{access_token}}"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/reportes/1/rechazar",
+              "host": ["{{base_url}}"],
+              "path": ["reportes", "1", "rechazar"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080/api"
+    },
+    {
+      "key": "access_token",
+      "value": ""
+    },
+    {
+      "key": "refresh_token",
+      "value": ""
+    }
+  ]
+}
