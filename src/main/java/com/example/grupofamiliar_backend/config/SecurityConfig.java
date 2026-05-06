@@ -80,11 +80,11 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authz -> authz
                         // Rutas públicas - Autenticación
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/refresh").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/logout").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/forgot-password").permitAll() // Añade este
+                        .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/refresh").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/logout").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/auth/forgot-password").permitAll() // Añade este
                         // Swagger y OpenAPI
                         .requestMatchers("/swagger-ui/**",
                                 "/swagger-ui.html",
@@ -94,13 +94,13 @@ public class SecurityConfig {
                         .permitAll()
                         .requestMatchers("/api/finanzas/**").hasAnyRole("FINANZAS", "TESORERO", "ADMIN")
                         // Rutas protegidas - Requieren autenticación
-                        .requestMatchers("/api/usuarios/**").authenticated()
+                        .requestMatchers("/usuarios/**").authenticated()
                         // .requestMatchers("/api/grupos/**").authenticated()
-                        .requestMatchers("/api/reportes/**").authenticated()
-                        .requestMatchers("/api/miembros/**").authenticated()
-                        .requestMatchers("/api/sectores/**").authenticated()
-                        .requestMatchers("/api/finanzas/**").authenticated()
-                        .requestMatchers("/api/periodos/**").authenticated()
+                        .requestMatchers("/reportes/**").authenticated()
+                        .requestMatchers("/miembros/**").authenticated()
+                        .requestMatchers("/sectores/**").authenticated()
+                        .requestMatchers("/finanzas/**").authenticated()
+                        .requestMatchers("/periodos/**").authenticated()
                         // Cualquier otra ruta requiere autenticación
                         .anyRequest().authenticated());
 
