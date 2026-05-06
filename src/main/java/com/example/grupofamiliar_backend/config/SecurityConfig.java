@@ -96,11 +96,11 @@ public class SecurityConfig {
                         // Rutas protegidas - Requieren autenticación
                         .requestMatchers("/api/usuarios/**").authenticated()
                         // .requestMatchers("/api/grupos/**").authenticated()
-                        .requestMatchers("/reportes/**").authenticated()
-                        .requestMatchers("/miembros/**").authenticated()
-                        .requestMatchers("/sectores/**").authenticated()
-                        .requestMatchers("/finanzas/**").authenticated()
-                        .requestMatchers("/periodos/**").authenticated()
+                        .requestMatchers("/api/reportes/**").authenticated()
+                        .requestMatchers("/api/miembros/**").authenticated()
+                        .requestMatchers("/api/sectores/**").authenticated()
+                        .requestMatchers("/api/finanzas/**").authenticated()
+                        .requestMatchers("/api/periodos/**").authenticated()
                         // Cualquier otra ruta requiere autenticación
                         .anyRequest().authenticated());
 
