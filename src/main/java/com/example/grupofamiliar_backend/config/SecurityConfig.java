@@ -114,7 +114,7 @@ public class SecurityConfig {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(
-                Arrays.asList("https://grupofamiliarbackend-production.up.railway.app/", "http://localhost:4200",
+                Arrays.asList("https://grupofamiliarfrontend-production.up.railway.app/", "http://localhost:4200",
                         "http://localhost:5173",
                         "http://localhost:5174"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
