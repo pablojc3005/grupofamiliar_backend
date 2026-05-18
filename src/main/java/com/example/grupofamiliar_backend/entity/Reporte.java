@@ -85,6 +85,9 @@ public class Reporte {
     @Column(nullable = false)
     private Short cantRetiroEspiritual = 0;
 
+    @Column(nullable = false)
+    private Short cantCultoCentral = 0;
+
     // --- Ofrendas ---
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal ofrendaSabado = BigDecimal.ZERO;

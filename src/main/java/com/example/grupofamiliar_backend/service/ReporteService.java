@@ -169,6 +169,7 @@ public class ReporteService {
         reporte.setCantHrMep(reporteDTO.getCantHrMep());
         reporte.setCantHrDiscipulado(reporteDTO.getCantHrDiscipulado());
         reporte.setCantRetiroEspiritual(reporteDTO.getCantRetiroEspiritual());
+        reporte.setCantCultoCentral(reporteDTO.getCantCultoCentral());
         reporte.setOfrendaSabado(reporteDTO.getOfrendaSabado());
         reporte.setOfrendaNinos(reporteDTO.getOfrendaNinos());
         reporte.setOfrendaMiercoles(reporteDTO.getOfrendaMiercoles());
@@ -268,6 +269,7 @@ public class ReporteService {
         reporte.setCantHrMep(reporteDTO.getCantHrMep());
         reporte.setCantHrDiscipulado(reporteDTO.getCantHrDiscipulado());
         reporte.setCantRetiroEspiritual(reporteDTO.getCantRetiroEspiritual());
+        reporte.setCantCultoCentral(reporteDTO.getCantCultoCentral());
         reporte.setOfrendaSabado(reporteDTO.getOfrendaSabado());
         reporte.setOfrendaNinos(reporteDTO.getOfrendaNinos());
         reporte.setOfrendaMiercoles(reporteDTO.getOfrendaMiercoles());
@@ -322,6 +324,7 @@ public class ReporteService {
                 .cantHrMep(reporte.getCantHrMep())
                 .cantHrDiscipulado(reporte.getCantHrDiscipulado())
                 .cantRetiroEspiritual(reporte.getCantRetiroEspiritual())
+                .cantCultoCentral(reporte.getCantCultoCentral())
                 .ofrendaSabado(reporte.getOfrendaSabado())
                 .ofrendaNinos(reporte.getOfrendaNinos())
                 .ofrendaMiercoles(reporte.getOfrendaMiercoles())

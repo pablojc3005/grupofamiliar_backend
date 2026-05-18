@@ -63,6 +63,8 @@ public class ReporteDTO {
 
     private Short cantRetiroEspiritual;
 
+    private Short cantCultoCentral;
+
     private BigDecimal ofrendaSabado;
 
     private BigDecimal ofrendaNinos;
