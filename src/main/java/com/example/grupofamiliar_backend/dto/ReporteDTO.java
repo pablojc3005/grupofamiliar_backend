@@ -33,10 +33,20 @@ public class ReporteDTO {
 
     private String estado;
 
-    private Integer tiempoOracion;
+    // --- Información general del líder ---
+    private Boolean diezmo;
+
+    private Boolean lecturaBiblia;
+
+    private Boolean visito;
+
+    private Short horasOracion;
+
+    private Short minutosOracion;
 
     private Boolean ayuno;
 
+    // --- Asistencia ---
     private Short cantHermanos;
 
     private Short cantAmigos;
@@ -49,13 +59,15 @@ public class ReporteDTO {
 
     private Short cantNinosAmigos;
 
+    // --- Visitas ---
     private Short cantVisitaConsolidacion;
 
     private Short cantVisitaCasaDePaz;
 
     private Short cantVisitaHogar;
 
-    private Short cantHrOracion;
+    // --- Actividades espirituales ---
+    private Short cultoHoracion;
 
     private Short cantHrMep;
 
@@ -65,6 +77,7 @@ public class ReporteDTO {
 
     private Short cantCultoCentral;
 
+    // --- Ofrendas ---
     private BigDecimal ofrendaSabado;
 
     private BigDecimal ofrendaNinos;

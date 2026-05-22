@@ -154,22 +154,31 @@ public class ReporteService {
         reporte.setGrupoFamiliar(grupoFamiliar);
         reporte.setSemanaDesde(reporteDTO.getSemanaDesde());
         reporte.setSemanaHasta(reporteDTO.getSemanaHasta());
-        reporte.setTiempoOracion(reporteDTO.getTiempoOracion() != null ? reporteDTO.getTiempoOracion() : 0);
+        // Info general
+        reporte.setDiezmo(reporteDTO.getDiezmo() != null ? reporteDTO.getDiezmo() : false);
+        reporte.setLecturaBiblia(reporteDTO.getLecturaBiblia() != null ? reporteDTO.getLecturaBiblia() : false);
+        reporte.setVisito(reporteDTO.getVisito() != null ? reporteDTO.getVisito() : false);
+        reporte.setHorasOracion(reporteDTO.getHorasOracion() != null ? reporteDTO.getHorasOracion() : 0);
+        reporte.setMinutosOracion(reporteDTO.getMinutosOracion() != null ? reporteDTO.getMinutosOracion() : 0);
         reporte.setAyuno(reporteDTO.getAyuno() != null ? reporteDTO.getAyuno() : false);
+        // Asistencia
         reporte.setCantHermanos(reporteDTO.getCantHermanos());
         reporte.setCantAmigos(reporteDTO.getCantAmigos());
         reporte.setCantAdolescentes(reporteDTO.getCantAdolescentes());
         reporte.setCantConvertidos(reporteDTO.getCantConvertidos());
         reporte.setCantNinosCristianos(reporteDTO.getCantNinosCristianos());
         reporte.setCantNinosAmigos(reporteDTO.getCantNinosAmigos());
+        // Visitas
         reporte.setCantVisitaConsolidacion(reporteDTO.getCantVisitaConsolidacion());
         reporte.setCantVisitaCasaDePaz(reporteDTO.getCantVisitaCasaDePaz());
         reporte.setCantVisitaHogar(reporteDTO.getCantVisitaHogar());
-        reporte.setCantHrOracion(reporteDTO.getCantHrOracion());
+        // Actividades espirituales
+        reporte.setCultoHoracion(reporteDTO.getCultoHoracion() != null ? reporteDTO.getCultoHoracion() : 0);
         reporte.setCantHrMep(reporteDTO.getCantHrMep());
         reporte.setCantHrDiscipulado(reporteDTO.getCantHrDiscipulado());
         reporte.setCantRetiroEspiritual(reporteDTO.getCantRetiroEspiritual());
         reporte.setCantCultoCentral(reporteDTO.getCantCultoCentral());
+        // Ofrendas
         reporte.setOfrendaSabado(reporteDTO.getOfrendaSabado());
         reporte.setOfrendaNinos(reporteDTO.getOfrendaNinos());
         reporte.setOfrendaMiercoles(reporteDTO.getOfrendaMiercoles());
@@ -217,8 +226,8 @@ public class ReporteService {
         // Enviar notificación al líder
         Usuario lider = reporte.getGrupoFamiliar().getLider();
         if (lider != null && lider.getEmail() != null) {
-            emailService.enviarNotificacionAprobacion(lider.getEmail(), 
-                reporte.getSemanaDesde().toString(), 
+            emailService.enviarNotificacionAprobacion(lider.getEmail(),
+                reporte.getSemanaDesde().toString(),
                 reporte.getSemanaHasta().toString());
         }
 
@@ -243,7 +252,7 @@ public class ReporteService {
     }
 
     /**
-     * Actualiza un reporte existente (solo si está en BORRADOR)
+     * Actualiza un reporte existente (solo si está en ENVIADO)
      */
     @Transactional
     public ReporteDTO actualizar(Long id, ReporteDTO reporteDTO) {
@@ -254,22 +263,31 @@ public class ReporteService {
             throw new RuntimeException("Solo se pueden editar reportes en estado ENVIADO");
         }
 
-        reporte.setTiempoOracion(reporteDTO.getTiempoOracion() != null ? reporteDTO.getTiempoOracion() : 0);
+        // Info general
+        reporte.setDiezmo(reporteDTO.getDiezmo() != null ? reporteDTO.getDiezmo() : false);
+        reporte.setLecturaBiblia(reporteDTO.getLecturaBiblia() != null ? reporteDTO.getLecturaBiblia() : false);
+        reporte.setVisito(reporteDTO.getVisito() != null ? reporteDTO.getVisito() : false);
+        reporte.setHorasOracion(reporteDTO.getHorasOracion() != null ? reporteDTO.getHorasOracion() : 0);
+        reporte.setMinutosOracion(reporteDTO.getMinutosOracion() != null ? reporteDTO.getMinutosOracion() : 0);
         reporte.setAyuno(reporteDTO.getAyuno() != null ? reporteDTO.getAyuno() : false);
+        // Asistencia
         reporte.setCantHermanos(reporteDTO.getCantHermanos());
         reporte.setCantAmigos(reporteDTO.getCantAmigos());
         reporte.setCantAdolescentes(reporteDTO.getCantAdolescentes());
         reporte.setCantConvertidos(reporteDTO.getCantConvertidos());
         reporte.setCantNinosCristianos(reporteDTO.getCantNinosCristianos());
         reporte.setCantNinosAmigos(reporteDTO.getCantNinosAmigos());
+        // Visitas
         reporte.setCantVisitaConsolidacion(reporteDTO.getCantVisitaConsolidacion());
         reporte.setCantVisitaCasaDePaz(reporteDTO.getCantVisitaCasaDePaz());
         reporte.setCantVisitaHogar(reporteDTO.getCantVisitaHogar());
-        reporte.setCantHrOracion(reporteDTO.getCantHrOracion());
+        // Actividades espirituales
+        reporte.setCultoHoracion(reporteDTO.getCultoHoracion() != null ? reporteDTO.getCultoHoracion() : 0);
         reporte.setCantHrMep(reporteDTO.getCantHrMep());
         reporte.setCantHrDiscipulado(reporteDTO.getCantHrDiscipulado());
         reporte.setCantRetiroEspiritual(reporteDTO.getCantRetiroEspiritual());
         reporte.setCantCultoCentral(reporteDTO.getCantCultoCentral());
+        // Ofrendas
         reporte.setOfrendaSabado(reporteDTO.getOfrendaSabado());
         reporte.setOfrendaNinos(reporteDTO.getOfrendaNinos());
         reporte.setOfrendaMiercoles(reporteDTO.getOfrendaMiercoles());
@@ -282,7 +300,7 @@ public class ReporteService {
     }
 
     /**
-     * Elimina un reporte (solo si está en BORRADOR)
+     * Elimina un reporte (solo si está en ENVIADO)
      */
     @Transactional
     public void eliminar(Long id) {
@@ -309,22 +327,31 @@ public class ReporteService {
                 .liderId(reporte.getGrupoFamiliar().getLider() != null ? reporte.getGrupoFamiliar().getLider().getId() : null)
                 .liderNombre(reporte.getGrupoFamiliar().getLider() != null ? reporte.getGrupoFamiliar().getLider().getNombreCompleto() : null)
                 .estado(reporte.getEstado().toString())
-                .tiempoOracion(reporte.getTiempoOracion())
+                // Info general
+                .diezmo(reporte.getDiezmo())
+                .lecturaBiblia(reporte.getLecturaBiblia())
+                .visito(reporte.getVisito())
+                .horasOracion(reporte.getHorasOracion())
+                .minutosOracion(reporte.getMinutosOracion())
                 .ayuno(reporte.getAyuno())
+                // Asistencia
                 .cantHermanos(reporte.getCantHermanos())
                 .cantAmigos(reporte.getCantAmigos())
                 .cantAdolescentes(reporte.getCantAdolescentes())
                 .cantConvertidos(reporte.getCantConvertidos())
                 .cantNinosCristianos(reporte.getCantNinosCristianos())
                 .cantNinosAmigos(reporte.getCantNinosAmigos())
+                // Visitas
                 .cantVisitaConsolidacion(reporte.getCantVisitaConsolidacion())
                 .cantVisitaCasaDePaz(reporte.getCantVisitaCasaDePaz())
                 .cantVisitaHogar(reporte.getCantVisitaHogar())
-                .cantHrOracion(reporte.getCantHrOracion())
+                // Actividades espirituales
+                .cultoHoracion(reporte.getCultoHoracion())
                 .cantHrMep(reporte.getCantHrMep())
                 .cantHrDiscipulado(reporte.getCantHrDiscipulado())
                 .cantRetiroEspiritual(reporte.getCantRetiroEspiritual())
                 .cantCultoCentral(reporte.getCantCultoCentral())
+                // Ofrendas
                 .ofrendaSabado(reporte.getOfrendaSabado())
                 .ofrendaNinos(reporte.getOfrendaNinos())
                 .ofrendaMiercoles(reporte.getOfrendaMiercoles())

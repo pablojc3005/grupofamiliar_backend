@@ -36,8 +36,21 @@ public class Reporte {
     @Enumerated(EnumType.STRING)
     private EstadoReporte estado = EstadoReporte.BORRADOR;
 
+    // --- Información general del líder ---
     @Column(nullable = false)
-    private Integer tiempoOracion = 0;
+    private Boolean diezmo = false;
+
+    @Column(name = "lectura_biblia", nullable = false)
+    private Boolean lecturaBiblia = false;
+
+    @Column(nullable = false)
+    private Boolean visito = false;
+
+    @Column(name = "horas_oracion", nullable = false)
+    private Short horasOracion = 0;
+
+    @Column(name = "minutos_oracion", nullable = false)
+    private Short minutosOracion = 0;
 
     @Column(nullable = false)
     private Boolean ayuno = false;
@@ -73,8 +86,8 @@ public class Reporte {
     private Short cantVisitaHogar = 0;
 
     // --- Actividades espirituales ---
-    @Column(nullable = false)
-    private Short cantHrOracion = 0;
+    @Column(name = "culto_horacion", nullable = false)
+    private Short cultoHoracion = 0;
 
     @Column(nullable = false)
     private Short cantHrMep = 0;
