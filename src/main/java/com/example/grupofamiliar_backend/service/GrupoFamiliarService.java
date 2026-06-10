@@ -103,4 +103,8 @@ public class GrupoFamiliarService {
         grupo.setActivo(!grupo.getActivo());
         grupoFamiliarRepository.save(grupo);
     }
+
+    public List<GrupoFamiliar> obtenerPorSector(Long sectorId) {
+        return grupoFamiliarRepository.findBySectorId(sectorId);
+    }
 }

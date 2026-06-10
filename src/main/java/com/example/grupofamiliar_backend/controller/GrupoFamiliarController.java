@@ -95,4 +95,13 @@ public class GrupoFamiliarController {
                     .body(new ApiResponse<>(false, ex.getMessage()));
         }
     }
+
+    @GetMapping("/sector/{sectorId}")
+    @Operation(summary = "Obtiene los grupos familiares de un sector")
+    public ResponseEntity<ApiResponse<List<GrupoFamiliarDTO>>> obtenerPorSector(@PathVariable Long sectorId) {
+        List<GrupoFamiliarDTO> grupos = grupoFamiliarService.obtenerPorSector(sectorId).stream()
+                .map(GrupoFamiliarDTO::fromEntity)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(new ApiResponse<>(true, "Grupos del sector obtenidos", grupos));
+    }
 }

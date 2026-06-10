@@ -95,8 +95,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/finanzas/**").hasAnyRole("FINANZAS", "TESORERO", "ADMIN")
                         // Rutas protegidas - Requieren autenticación
                         .requestMatchers("/usuarios/**").authenticated()
-                        // .requestMatchers("/api/grupos/**").authenticated()
                         .requestMatchers("/reportes/**").authenticated()
+                        .requestMatchers("/reportes-sectoriales/**").authenticated()
                         .requestMatchers("/miembros/**").authenticated()
                         .requestMatchers("/sectores/**").authenticated()
                         .requestMatchers("/finanzas/**").authenticated()
