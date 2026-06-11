@@ -115,9 +115,8 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(
                 Arrays.asList("https://grupofamiliarfrontend-production.up.railway.app", // para producción
-                        "http://localhost:4200",
-                        "http://localhost:5173",
-                        "http://localhost:5174"));
+                        "https://grupofamiliar-frontend.vercel.app",
+                        "http://localhost:5173"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
